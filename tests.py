@@ -35,7 +35,7 @@ class TestBooksCollector:
     def test_get_books_genre_get_existing_genre(self, collector):
         collector.add_new_book('Собака Баскервилей')
         collector.set_book_genre('Собака Баскервилей', 'Детективы')
-        books_genre_result = collector.books_genre
+        books_genre_result = collector.get_books_genre()
 
         assert books_genre_result == {'Собака Баскервилей': 'Детективы'}
 
@@ -52,7 +52,6 @@ class TestBooksCollector:
 
     def test_add_book_in_favorites_add_one_book_to_favorites(self, collector):
         collector.add_new_book('Собака Баскервилей')
-        collector.set_book_genre('Собака Баскервилей', 'Детективы')
         collector.add_book_in_favorites('Собака Баскервилей')
 
         assert 'Собака Баскервилей' in collector.get_list_of_favorites_books()
